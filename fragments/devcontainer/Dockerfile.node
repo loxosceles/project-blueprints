@@ -29,6 +29,8 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && rm -rf /tmp/kirocli \
     # pnpm via corepack
     && corepack enable && corepack prepare pnpm@latest --activate \
+    # Claude Code CLI
+    && npm install -g @anthropic-ai/claude-code \
     # Cleanup
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
