@@ -22,4 +22,8 @@ done
 [ -x "${WORKSPACE_ROOT}/.devcontainer/post_create_project.sh" ] && \
   "${WORKSPACE_ROOT}/.devcontainer/post_create_project.sh"
 
+# Restore skills from lockfile
+[ -f "${WORKSPACE_ROOT}/skills-lock.json" ] && \
+  cd "${WORKSPACE_ROOT}" && npx -y skills experimental_install
+
 echo "✓ Devcontainer setup complete"
