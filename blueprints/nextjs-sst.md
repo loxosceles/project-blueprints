@@ -382,7 +382,13 @@ Generate a project README with:
 
 ## 11. Verification
 
-Run these checks. All must pass before the project is considered complete:
+Run a final format pass to catch any files created after the initial format (README, skills-lock.json, etc.):
+
+```bash
+pnpm format
+```
+
+Then run these checks. All must pass before the project is considered complete:
 
 ```bash
 pnpm lint          # ESLint passes
