@@ -83,13 +83,9 @@ Replace with (SSR mode, no static export):
 
 ```typescript
 import type { NextConfig } from 'next';
-import { resolve } from 'path';
 
 const nextConfig: NextConfig = {
   images: { unoptimized: true },
-  turbopack: {
-    root: resolve(__dirname, '..'),
-  },
 };
 
 export default nextConfig;
@@ -291,6 +287,23 @@ echo "OpenNext build complete"
 ```
 
 Make executable: `chmod +x scripts/build-open-next.sh`
+
+### frontend/open-next.config.ts
+
+OpenNext's build subprocess doesn't preserve Turbopack's monorepo root resolution. Use webpack for production builds:
+
+```typescript
+import type { OpenNextConfig } from "@opennextjs/aws/types/open-next.js";
+
+const config: OpenNextConfig = {
+  default: {},
+  buildCommand: "pnpm next build --webpack",
+};
+
+export default config;
+```
+
+Note: `next dev` still uses Turbopack (fast). Only the production build via OpenNext uses webpack.
 
 ---
 
