@@ -1,0 +1,32 @@
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    user: '1000:1000'
+    env_file:
+      - .env
+    volumes:
+      # Workspace
+      - ..:/workspaces/${PROJECT_NAME}:cached
+      # Config (shared, ro)
+      - ~/.devcontainer-config/config/zsh:/home/vscode/.config/zsh:ro
+      - ~/.devcontainer-config/config/tmux:/home/vscode/.config/tmux:ro
+      - ~/.devcontainer-config/config/git:/home/vscode/.config/git:ro
+      - ~/.devcontainer-config/claude:/home/vscode/.config/claude-shared:ro
+      # Secrets (from default host locations, never devcontainer-config)
+      - ~/.ssh/contexts/personal:/home/vscode/.ssh:ro
+      - ~/.aws/contexts/ai-portfolio:/home/vscode/.aws:cached
+      # Cache (per-project, rw)
+      - ~/.devcontainer-config/cache/${PROJECT_NAME}:/home/vscode/.cache
+      - ~/.devcontainer-config/cache/${PROJECT_NAME}/claude:/home/vscode/.claude
+      - ~/.devcontainer-config/data/${PROJECT_NAME}/zsh_history:/home/vscode/.zsh_history
+      - ~/.devcontainer-config/data/${PROJECT_NAME}/zsh_history_tmux:/home/vscode/.zsh_history_tmux
+    environment:
+      - WORKSPACE_ROOT=/workspaces/${PROJECT_NAME}
+      - PROJECT_NAME=${PROJECT_NAME}
+      - HOME=/home/vscode
+      - USER=vscode
+      - AWS_PAGER=
+      - SAM_CLI_TELEMETRY=0
+    command: sleep infinity
