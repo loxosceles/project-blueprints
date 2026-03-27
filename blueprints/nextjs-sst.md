@@ -211,7 +211,7 @@ Create `package.json`:
 }
 ```
 
-**Version pinning**: The `next` version in root devDependencies must match the version in `frontend/package.json` (Turbopack needs next resolvable from workspace root). After `create-next-app` runs, read the installed next version and pin it here.
+**Important**: Do NOT add `next` to root devDependencies. It must only be in `frontend/package.json` so pnpm keeps it in `frontend/node_modules/`. Hoisting `next` to the root breaks Turbopack's monorepo root detection.
 
 ---
 
