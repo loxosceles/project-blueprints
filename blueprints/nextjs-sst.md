@@ -327,6 +327,8 @@ Copy these verbatim from `fragments/` in this repo:
 | `ci/validate-version-label.yml` | `.github/workflows/validate-version-label.yml` |
 | `ci/version-and-tag.yml` | `.github/workflows/version-and-tag.yml` |
 | `editor/vscode-settings.json` | `.vscode/settings.json` |
+
+**After copying `vscode-settings.json`**: Replace the `statusBar.background` color with a random hex color to visually distinguish this project from others in VSCode. Generate a color with enough contrast (avoid very dark or very light values).
 | `project/.gitignore` | `.gitignore` |
 | `project/.npmrc` | `.npmrc` |
 | `project/.envrc` | `.envrc` |
