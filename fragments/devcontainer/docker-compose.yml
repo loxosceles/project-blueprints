@@ -14,6 +14,7 @@ services:
       - ~/.devcontainer-config/config/tmux:/home/vscode/.config/tmux:ro
       - ~/.devcontainer-config/config/git:/home/vscode/.config/git:ro
       - ~/.devcontainer-config/claude:/home/vscode/.config/claude-shared:ro
+      - ~/.devcontainer-config/cache/${PROJECT_NAME}/kiro:/home/vscode/.kiro
       # Secrets (from default host locations, never devcontainer-config)
       - ~/.ssh/contexts/personal:/home/vscode/.ssh:ro
       - ~/.aws/contexts/ai-portfolio:/home/vscode/.aws:cached
