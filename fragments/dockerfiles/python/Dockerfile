@@ -28,9 +28,9 @@ RUN npm install -g @anthropic-ai/claude-code
 # Kiro CLI
 RUN ARCH=$(uname -m) \
     && if [ "$ARCH" = "aarch64" ] || [ "$ARCH" = "arm64" ]; then \
-        KIRO_URL="https://desktop-release.q.us-east-1.amazonaws.com/1.26.2/kirocli-aarch64-linux.tar.gz"; \
+        KIRO_URL="https://desktop-release.q.us-east-1.amazonaws.com/latest/kirocli-aarch64-linux.tar.gz"; \
     else \
-        KIRO_URL="https://desktop-release.q.us-east-1.amazonaws.com/1.26.2/kirocli-x86_64-linux.tar.gz"; \
+        KIRO_URL="https://desktop-release.q.us-east-1.amazonaws.com/latest/kirocli-x86_64-linux.tar.gz"; \
     fi \
     && curl -fsSL "$KIRO_URL" | tar -xz -C /tmp \
     && mv /tmp/kirocli/bin/* /usr/local/bin/ \
