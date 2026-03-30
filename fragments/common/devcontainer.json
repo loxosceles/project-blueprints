@@ -6,14 +6,9 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "ms-vscode.vscode-typescript-next",
         "usernamehw.errorlens",
         "streetsidesoftware.code-spell-checker",
-        "eetami.whitespace-formatter",
         "redhat.vscode-yaml",
-        "esbenp.prettier-vscode",
-        "bradlc.vscode-tailwindcss",
-        "dbaeumer.vscode-eslint",
         "amazonwebservices.amazon-q-vscode",
         "GitHub.copilot-chat"
       ],
@@ -23,18 +18,7 @@
         "editor.formatOnType": false,
         "editor.formatOnPaste": true,
         "editor.formatOnSaveMode": "file",
-        "files.autoSave": "onFocusChange",
-        "js/ts.preferences.importModuleSpecifier": "relative",
-        "editor.codeActionsOnSave": {
-          "source.fixAll.eslint": "explicit",
-          "source.organizeImports": "explicit"
-        },
-        "[typescript][typescriptreact]": {
-          "editor.defaultFormatter": "esbenp.prettier-vscode"
-        },
-        "[json][jsonc]": {
-          "editor.defaultFormatter": "esbenp.prettier-vscode"
-        }
+        "files.autoSave": "onFocusChange"
       }
     }
   },

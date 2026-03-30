@@ -1,0 +1,16 @@
+{
+  "extensions": [
+    "ms-python.python",
+    "charliermarsh.ruff"
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "/usr/local/bin/python",
+    "[python]": {
+      "editor.defaultFormatter": "charliermarsh.ruff",
+      "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit",
+        "source.fixAll": "explicit"
+      }
+    }
+  }
+}

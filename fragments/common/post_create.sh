@@ -19,6 +19,8 @@ done
 [ -f "$HOME/.config/claude-shared/settings.json" ] && \
   cp "$HOME/.config/claude-shared/settings.json" "$HOME/.claude/settings.json"
 
+# {{STACK_INJECTIONS}}
+
 [ -x "${WORKSPACE_ROOT}/.devcontainer/post_create_project.sh" ] && \
   "${WORKSPACE_ROOT}/.devcontainer/post_create_project.sh"
 
