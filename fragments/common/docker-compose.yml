@@ -16,7 +16,7 @@ services:
       - ~/.devcontainer-config/claude:/home/vscode/.config/claude-shared:ro
       - ~/.devcontainer-config/cache/${PROJECT_NAME}/kiro:/home/vscode/.kiro
       # Secrets (from default host locations, never devcontainer-config)
-      - ${SSH_PATH:-~/.ssh}:/home/vscode/.ssh:ro
+      - ${SSH_PATH:-~/.ssh}:/home/vscode/.ssh:cached
       - ${AWS_PATH:-~/.aws}:/home/vscode/.aws:cached
       # Cache (per-project, rw)
       - ~/.devcontainer-config/cache/${PROJECT_NAME}:/home/vscode/.cache
