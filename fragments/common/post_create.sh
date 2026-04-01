@@ -45,6 +45,12 @@ echo "export PROJECT_NAME=\"${PROJECT_NAME}\"" >> "$HOME/.zshrc.local"
 [ -x "${WORKSPACE_ROOT}/.devcontainer/post_create_project.sh" ] && \
   "${WORKSPACE_ROOT}/.devcontainer/post_create_project.sh"
 
+# ─── Kiro agents (seed from defaults if empty) ──────────────────────────────
+if [ -d "$HOME/.config/default-agents/kiro" ] && [ ! -d "$HOME/.kiro/agents" ]; then
+  mkdir -p "$HOME/.kiro/agents"
+  cp "$HOME/.config/default-agents/kiro"/*.json "$HOME/.kiro/agents/" 2>/dev/null
+fi
+
 # ─── Restore skills ─────────────────────────────────────────────────────────
 [ -f "${WORKSPACE_ROOT}/skills-lock.json" ] && \
   cd "${WORKSPACE_ROOT}" && npx -y skills experimental_install
