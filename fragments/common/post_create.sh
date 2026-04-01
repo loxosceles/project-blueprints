@@ -51,8 +51,16 @@ if [ -d "$HOME/.config/default-agents/kiro" ] && [ ! -d "$HOME/.kiro/agents" ]; 
   cp "$HOME/.config/default-agents/kiro"/*.json "$HOME/.kiro/agents/" 2>/dev/null
 fi
 
+# ─── Codex agents (symlink into .github/agents/) ────────────────────────────
+if [ -d "$HOME/.config/default-agents/codex" ]; then
+  mkdir -p "${WORKSPACE_ROOT}/.github/agents"
+  for f in "$HOME/.config/default-agents/codex"/*.md; do
+    [ -f "$f" ] && ln -sf "$f" "${WORKSPACE_ROOT}/.github/agents/$(basename "$f")"
+  done
+fi
+
 # ─── Restore skills ─────────────────────────────────────────────────────────
 [ -f "${WORKSPACE_ROOT}/skills-lock.json" ] && \
-  cd "${WORKSPACE_ROOT}" && npx -y skills experimental_install
+  cd "${WORKSPACE_ROOT}" && npx -y skills add loxosceles/ai-dev --agent claude-code github-copilot codex kiro-cli -y
 
 echo "✓ Devcontainer setup complete"

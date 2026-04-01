@@ -14,6 +14,8 @@ services:
       - ${DEVCONTAINER_STATE:-~/.devcontainer-state}/config/tmux:/home/vscode/.config/tmux:ro
       - ${DEVCONTAINER_STATE:-~/.devcontainer-state}/config/git:/home/vscode/.config/git:ro
       - ${DEVCONTAINER_STATE:-~/.devcontainer-state}/claude:/home/vscode/.config/claude-shared:ro
+      - ${KIRO_AGENTS:-~/.devcontainer-state/ai/agents/kiro}:/home/vscode/.config/default-agents/kiro
+      - ${CODEX_AGENTS:-~/.devcontainer-state/ai/agents/codex}:/home/vscode/.config/default-agents/codex:ro
       - ${DEVCONTAINER_STATE:-~/.devcontainer-state}/cache/${PROJECT_NAME}/kiro:/home/vscode/.kiro
       # Secrets (from default host locations, never devcontainer-state)
       - ${SSH_PATH:-~/.ssh}:/home/vscode/.ssh:cached
@@ -21,8 +23,7 @@ services:
       # Cache (per-project, rw)
       - ${DEVCONTAINER_STATE:-~/.devcontainer-state}/cache/${PROJECT_NAME}:/home/vscode/.cache
       - ${DEVCONTAINER_STATE:-~/.devcontainer-state}/cache/${PROJECT_NAME}/claude:/home/vscode/.claude
-      - ${DEVCONTAINER_STATE:-~/.devcontainer-state}/data/${PROJECT_NAME}/zsh_history:/home/vscode/.zsh_history
-      - ${DEVCONTAINER_STATE:-~/.devcontainer-state}/data/${PROJECT_NAME}/zsh_history_tmux:/home/vscode/.zsh_history_tmux
+      - ${DEVCONTAINER_STATE:-~/.devcontainer-state}/data/zsh_history_tmux:/home/vscode/.zsh_history_tmux
       # {{STACK_VOLUMES}}
     environment:
       - WORKSPACE_ROOT=/workspaces/${PROJECT_NAME}
