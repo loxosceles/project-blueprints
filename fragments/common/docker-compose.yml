@@ -10,19 +10,19 @@ services:
       # Workspace
       - ..:/workspaces/${PROJECT_NAME}:cached
       # Config (shared, ro)
-      - ~/.devcontainer-config/config/zsh:/home/vscode/.config/zsh:ro
-      - ~/.devcontainer-config/config/tmux:/home/vscode/.config/tmux:ro
-      - ~/.devcontainer-config/config/git:/home/vscode/.config/git:ro
-      - ~/.devcontainer-config/claude:/home/vscode/.config/claude-shared:ro
-      - ~/.devcontainer-config/cache/${PROJECT_NAME}/kiro:/home/vscode/.kiro
-      # Secrets (from default host locations, never devcontainer-config)
+      - ~/.devcontainer-configs/config/zsh:/home/vscode/.config/zsh:ro
+      - ~/.devcontainer-configs/config/tmux:/home/vscode/.config/tmux:ro
+      - ~/.devcontainer-configs/config/git:/home/vscode/.config/git:ro
+      - ~/.devcontainer-configs/claude:/home/vscode/.config/claude-shared:ro
+      - ~/.devcontainer-configs/cache/${PROJECT_NAME}/kiro:/home/vscode/.kiro
+      # Secrets (from default host locations, never devcontainer-configs)
       - ${SSH_PATH:-~/.ssh}:/home/vscode/.ssh:cached
       - ${AWS_PATH:-~/.aws}:/home/vscode/.aws:cached
       # Cache (per-project, rw)
-      - ~/.devcontainer-config/cache/${PROJECT_NAME}:/home/vscode/.cache
-      - ~/.devcontainer-config/cache/${PROJECT_NAME}/claude:/home/vscode/.claude
-      - ~/.devcontainer-config/data/${PROJECT_NAME}/zsh_history:/home/vscode/.zsh_history
-      - ~/.devcontainer-config/data/${PROJECT_NAME}/zsh_history_tmux:/home/vscode/.zsh_history_tmux
+      - ~/.devcontainer-configs/cache/${PROJECT_NAME}:/home/vscode/.cache
+      - ~/.devcontainer-configs/cache/${PROJECT_NAME}/claude:/home/vscode/.claude
+      - ~/.devcontainer-configs/data/${PROJECT_NAME}/zsh_history:/home/vscode/.zsh_history
+      - ~/.devcontainer-configs/data/${PROJECT_NAME}/zsh_history_tmux:/home/vscode/.zsh_history_tmux
       # {{STACK_VOLUMES}}
     environment:
       - WORKSPACE_ROOT=/workspaces/${PROJECT_NAME}
