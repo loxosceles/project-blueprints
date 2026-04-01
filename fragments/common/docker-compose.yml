@@ -10,19 +10,19 @@ services:
       # Workspace
       - ..:/workspaces/${PROJECT_NAME}:cached
       # Config (shared, ro)
-      - ~/.devcontainer-configs/config/zsh:/home/vscode/.config/zsh:ro
-      - ~/.devcontainer-configs/config/tmux:/home/vscode/.config/tmux:ro
-      - ~/.devcontainer-configs/config/git:/home/vscode/.config/git:ro
-      - ~/.devcontainer-configs/claude:/home/vscode/.config/claude-shared:ro
-      - ~/.devcontainer-configs/cache/${PROJECT_NAME}/kiro:/home/vscode/.kiro
-      # Secrets (from default host locations, never devcontainer-configs)
+      - ${DEVCONTAINER_STATE:-~/.devcontainer-state}/config/zsh:/home/vscode/.config/zsh:ro
+      - ${DEVCONTAINER_STATE:-~/.devcontainer-state}/config/tmux:/home/vscode/.config/tmux:ro
+      - ${DEVCONTAINER_STATE:-~/.devcontainer-state}/config/git:/home/vscode/.config/git:ro
+      - ${DEVCONTAINER_STATE:-~/.devcontainer-state}/claude:/home/vscode/.config/claude-shared:ro
+      - ${DEVCONTAINER_STATE:-~/.devcontainer-state}/cache/${PROJECT_NAME}/kiro:/home/vscode/.kiro
+      # Secrets (from default host locations, never devcontainer-state)
       - ${SSH_PATH:-~/.ssh}:/home/vscode/.ssh:cached
       - ${AWS_PATH:-~/.aws}:/home/vscode/.aws:cached
       # Cache (per-project, rw)
-      - ~/.devcontainer-configs/cache/${PROJECT_NAME}:/home/vscode/.cache
-      - ~/.devcontainer-configs/cache/${PROJECT_NAME}/claude:/home/vscode/.claude
-      - ~/.devcontainer-configs/data/${PROJECT_NAME}/zsh_history:/home/vscode/.zsh_history
-      - ~/.devcontainer-configs/data/${PROJECT_NAME}/zsh_history_tmux:/home/vscode/.zsh_history_tmux
+      - ${DEVCONTAINER_STATE:-~/.devcontainer-state}/cache/${PROJECT_NAME}:/home/vscode/.cache
+      - ${DEVCONTAINER_STATE:-~/.devcontainer-state}/cache/${PROJECT_NAME}/claude:/home/vscode/.claude
+      - ${DEVCONTAINER_STATE:-~/.devcontainer-state}/data/${PROJECT_NAME}/zsh_history:/home/vscode/.zsh_history
+      - ${DEVCONTAINER_STATE:-~/.devcontainer-state}/data/${PROJECT_NAME}/zsh_history_tmux:/home/vscode/.zsh_history_tmux
       # {{STACK_VOLUMES}}
     environment:
       - WORKSPACE_ROOT=/workspaces/${PROJECT_NAME}
