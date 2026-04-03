@@ -15,6 +15,28 @@ if [ -n "$errors" ]; then
   exit 1
 fi
 
+# ─── Check for root-owned mount dirs ─────────────────────────────────────────
+# Docker auto-creates missing mount sources as root-owned empty dirs.
+# This usually means ~/.devcontainer-state wasn't cloned before first container start.
+root_owned=""
+for dir in "$HOME/.kiro" "$HOME/.cache" "$HOME/.claude"; do
+  if [ -d "$dir" ] && [ ! -w "$dir" ]; then
+    root_owned="${root_owned}\n  - $dir"
+  fi
+done
+if [ -n "$root_owned" ]; then
+  echo "⛔ Root-owned directories detected (not writable by vscode):${root_owned}"
+  echo ""
+  echo "This happens when Docker auto-creates mount targets before ~/.devcontainer-state is cloned."
+  echo "Fix on the HOST machine:"
+  echo "  1. Stop this container"
+  echo "  2. sudo rm -rf ~/.devcontainer-state"
+  echo "  3. git clone git@github.com:loxosceles/devcontainer-state.git ~/.devcontainer-state"
+  echo "  4. Re-create per-project dirs: mkdir -p ~/.devcontainer-state/cache/${PROJECT_NAME}/{claude,kiro}"
+  echo "  5. Rebuild the container"
+  exit 1
+fi
+
 # ─── Claude settings check ──────────────────────────────────────────────────
 if [ ! -f "$HOME/.config/claude-shared/settings.json" ]; then
   echo "⚠️  Claude settings not found."
