@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+dist
+build
+*.d.ts
+pnpm-lock.yaml
+functions/
+*.py
+.venv
+uv.lock
+ruff.toml

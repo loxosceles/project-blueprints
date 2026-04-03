@@ -220,14 +220,14 @@ Copy these verbatim from `fragments/` in this repo:
 | `linting/eslint.config.hybrid.mjs` | `eslint.config.mjs` |
 | `linting/ruff.toml` | `ruff.toml` |
 | `linting/.prettierrc.cjs` | `.prettierrc.cjs` |
-| `linting/.prettierignore` | `.prettierignore` |
+| `linting/.prettierignore.hybrid` | `.prettierignore` |
 | `ci/deploy.yml` | `.github/workflows/deploy.yml` |
 | `ci/lint.yml` | `.github/workflows/lint.yml` |
 | `ci/test.yml` | `.github/workflows/test.yml` |
 | `ci/validate-version-label.yml` | `.github/workflows/validate-version-label.yml` |
 | `ci/version-and-tag.yml` | `.github/workflows/version-and-tag.yml` |
 | `editor/vscode-settings.json` | `.vscode/settings.json` |
-| `project/.gitignore` | `.gitignore` |
+| `project/.gitignore.hybrid` | `.gitignore` |
 | `project/.npmrc` | `.npmrc` |
 | `project/.env_TEMPLATE` | `.env_TEMPLATE` |
 
@@ -265,35 +265,6 @@ Merge the Python injection settings into `.vscode/settings.json`:
     }
   }
 }
-```
-
-### 6.3 Extend .gitignore
-
-Append Python-specific patterns to `.gitignore`:
-
-```gitignore
-
-# Python
-__pycache__/
-*.py[cod]
-*.egg-info/
-.venv/
-uv.lock
-*.egg
-.ruff_cache/
-.pytest_cache/
-```
-
-### 6.4 Extend .prettierignore
-
-Append to `.prettierignore`:
-
-```
-functions/
-*.py
-.venv
-uv.lock
-ruff.toml
 ```
 
 ---

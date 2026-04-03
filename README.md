@@ -69,3 +69,8 @@ These projects represent the current "gold standard" for each pattern:
 | guitarizta | Next.js + SST + pnpm | Latest devcontainer, skills setup, CI/CD |
 | career-match-engine | Next.js + CDK + pnpm | Backend infra, Lambda patterns, CLI tools |
 | ai-portfolio | Next.js + CDK + pnpm | Frontend patterns, static hosting |
+
+## Known issues / TODO
+
+- **Fragment directory structure is inconsistent.** `dockerfiles/` is organized by stack (`node/`, `python/`, `hybrid/`) but `project/`, `linting/`, and `ci/` are flat with suffix conventions (`.hybrid`, `.sst-only`). As more stacks are added, this should be unified — either all folders use stack subdirectories, or all use suffixes. Proposed solution: adopt the `dockerfiles/` pattern everywhere (`project/node/.gitignore`, `project/hybrid/.gitignore`, `linting/node/eslint.config.mjs`, etc.). Shared fragments that are identical across stacks stay in `common/`.
+- **Migration skill references stale path `fragments/devcontainer/`** which doesn't exist in this repo (actual paths: `fragments/common/` + `fragments/dockerfiles/`). The `project-migration` SKILL.md in `loxosceles/ai-dev` needs updating to match the current fragment structure.
