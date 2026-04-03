@@ -2,7 +2,7 @@
 
 SST v3 (Ion) infrastructure with Python Lambda functions. TypeScript for SST config, Python for business logic. pnpm monorepo with uv workspace for Python, centralized linting (ESLint + Ruff), formatting (Prettier + Ruff), and CI/CD.
 
-**Base image**: `mcr.microsoft.com/devcontainers/base:bookworm` — generic Debian with Node 22 + Python 3.12 + uv + pnpm installed on top.
+**Base image**: `mcr.microsoft.com/devcontainers/base:bookworm` — generic Debian with Node 22 + Python 3.11 + uv + pnpm installed on top.
 
 ---
 
@@ -63,7 +63,7 @@ Create `functions/pyproject.toml`:
 [project]
 name = "functions"
 version = "0.0.1"
-requires-python = "==3.12.*"
+requires-python = "==3.11.*"
 dependencies = [
     "boto3>=1.35",
 ]
@@ -93,7 +93,7 @@ Create `pyproject.toml` (root):
 [project]
 name = "{{project_name}}"
 version = "0.0.1"
-requires-python = "==3.12.*"
+requires-python = "==3.11.*"
 
 [tool.uv.workspace]
 members = ["functions"]
@@ -350,7 +350,7 @@ Copy all files from `fragments/agents/kiro/` to `.kiro/agents/`:
 
 Generate a project README with:
 - Project name and brief description (ask user)
-- Tech stack summary (SST v3, Python 3.12, TypeScript, uv, pnpm)
+- Tech stack summary (SST v3, Python 3.11, TypeScript, uv, pnpm)
 - Getting started (devcontainer, env setup, pnpm install, uv sync)
 - Available scripts
 - Deployment info
@@ -393,4 +393,4 @@ When the project needs a Next.js frontend:
 - **New major version of a dependency**: Ask before upgrading.
 - **Deprecated CLI flag**: Find the replacement, present it, ask for confirmation.
 - **Fragment file conflicts**: Never silently modify a fragment. Report and ask.
-- **Python version**: If `python3.12` is not available in bookworm repos, use the `deadsnakes` PPA or adjust the Dockerfile.
+- **Python version**: Bookworm ships Python 3.11. When Trixie (Debian 13) becomes the base, update to 3.12+.

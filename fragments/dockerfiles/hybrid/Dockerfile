@@ -3,9 +3,9 @@ FROM mcr.microsoft.com/devcontainers/base:bookworm
 # ─── Python 3.12 ─────────────────────────────────────────────────────────────
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends \
-    python3.12 python3.12-venv python3.12-dev \
-    && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.12 1 \
-    && update-alternatives --install /usr/bin/python python /usr/bin/python3.12 1 \
+    python3.11 python3.11-venv python3.11-dev \
+    && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1 \
+    && update-alternatives --install /usr/bin/python python /usr/bin/python3.11 1 \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # ─── uv (Python package manager) ─────────────────────────────────────────────
